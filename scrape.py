@@ -102,7 +102,7 @@ for club_url in club_urls:
             continue
 
 # load chrome web driver
-driver = Chrome(executable_path='/Users/albertklorer/Desktop/chess.com-webscraper/chromedriver')
+driver = Chrome(executable_path='chromedriver')
 
 # create dataframe to store member information
 members = pd.DataFrame(columns=['id', 'bullet_rating', 'bullet_wins', 'bullet_losses', 'bullet_draws', 'blitz_rating', 'blitz_wins', 'blitz_losses', 'blitz_draws',
