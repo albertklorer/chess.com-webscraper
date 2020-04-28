@@ -102,7 +102,7 @@ for club_url in club_urls:
             continue
 
 # load chrome web driver
-driver = Chrome(executable_path='/Users/albertklorer/Desktop/chess.com-webscraper/chromedriver')
+driver = Chrome(executable_path='chromedriver')
 
 # create dataframe to store member information
 members = pd.DataFrame(columns=['id', 'bullet_rating', 'bullet_wins', 'bullet_losses', 'bullet_draws', 'blitz_rating', 'blitz_wins', 'blitz_losses', 'blitz_draws',
@@ -110,9 +110,6 @@ members = pd.DataFrame(columns=['id', 'bullet_rating', 'bullet_wins', 'bullet_lo
 
 # iterate through member links
 for member_link in member_links:
-    # find user id
-    id = member_link.split('/')[4]
-
     # attempt to load member page
     try:
         driver.get(member_link)
@@ -215,7 +212,7 @@ for member_link in member_links:
         daily_losses = np.nan
         daily_draws = np.nan
     
-    members = members.append({'id': id, 'bullet_rating': bullet_rating, 'bullet_wins':bullet_wins, 'bullet_losses':bullet_losses, 'bullet_draws':bullet_draws,
+    members = members.append({'bullet_rating': bullet_rating, 'bullet_wins':bullet_wins, 'bullet_losses':bullet_losses, 'bullet_draws':bullet_draws,
         'blitz_rating': blitz_rating, 'blitz_wins': blitz_wins, 'blitz_losses': blitz_losses, 'blitz_draws': blitz_draws,'rapid_rating': rapid_rating, 
         'rapid_wins': rapid_wins, 'rapid_losses': rapid_losses, 'rapid_draws': rapid_draws, 'daily_rating': daily_rating, 'daily_wins': daily_wins, 
         'daily_losses': daily_losses, 'daily_draws': daily_draws}, ignore_index=True)
